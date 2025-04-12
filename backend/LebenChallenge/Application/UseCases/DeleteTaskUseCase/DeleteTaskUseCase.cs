@@ -1,5 +1,6 @@
 using LebenChallenge.Application.DTO;
 using LebenChallenge.Application.Interfaces;
+using System.Threading.Tasks;
 
 namespace LebenChallenge.Application.UseCases;
 
@@ -12,8 +13,8 @@ public class DeleteTaskUseCase : IDeleteTaskUseCase
         _taskRepository = taskRepository;
     }
 
-    public Task ExecuteAsync(DeleteTaskDTO taskToDelete)
+    public async Task ExecuteAsync(DeleteTaskDTO taskToDelete)
     {
-        throw new NotImplementedException("DeleteTaskUseCase is not implemented yet.");
+        await _taskRepository.DeleteAsync(taskToDelete.Id);
     }
 }

@@ -1,5 +1,7 @@
 using LebenChallenge.Application.Interfaces;
 using LebenChallenge.Application.UseCases;
+using LebenChallenge.Application.UseCases.ChangePriorityTaskUseCase;
+using LebenChallenge.Application.UseCases.UpdateTaskUseCase;
 using LebenChallenge.Infrastructure.Persistence;
 using LebenChallenge.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -14,8 +16,11 @@ builder.Services.AddControllers();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(
-        "AllowAllOrigins",
-        builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
+        "AllowAllOrigins", 
+        builder => builder
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader()
     );
 });
 
@@ -29,6 +34,8 @@ builder.Services.AddScoped<IGetTaskByIdUseCase, GetTaskByIdUseCase>();
 builder.Services.AddScoped<ICompleteTaskUseCase, CompleteTaskUseCase>();
 builder.Services.AddScoped<ICreateTaskUseCase, CreateTaskUseCase>();
 builder.Services.AddScoped<IDeleteTaskUseCase, DeleteTaskUseCase>();
+builder.Services.AddScoped<IUpdateTaskUseCase, UpdateTaskUseCase>();
+builder.Services.AddScoped<IChangePriorityTaskUseCase, ChangePriorityTaskUseCase>();
 
 var app = builder.Build();
 

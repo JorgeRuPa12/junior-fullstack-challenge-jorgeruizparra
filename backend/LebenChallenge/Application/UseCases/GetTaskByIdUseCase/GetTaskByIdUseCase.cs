@@ -12,8 +12,8 @@ public class GetTaskByIdUseCase : IGetTaskByIdUseCase
         _taskRepository = taskRepository;
     }
 
-    public Task<TaskItem> ExecuteAsync(int id)
+    public async Task<TaskItem> ExecuteAsync(int id)
     {
-        throw new NotImplementedException("GetTaskByIdUseCase is not implemented yet.");
+        return await _taskRepository.GetByIdAsync(id);
     }
 }

@@ -2,11 +2,12 @@ namespace LebenChallenge.Domain
 {
     public class TaskItem
     {
-        public int Id { get; private set; }
-        public string Name { get; private set; }
-        public string Description { get; private set; }
-        public DateTime DueDate { get; private set; }
-        public bool IsCompleted { get; private set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public DateTime DueDate { get; set; }
+        public int Priority { get; set; }
+        public bool IsCompleted { get; set; }
 
         public TaskItem()
         {
@@ -18,12 +19,18 @@ namespace LebenChallenge.Domain
             Name = name;
             Description = description;
             DueDate = dueDate;
+            Priority = 1;
             IsCompleted = false;
         }
 
         public void MarkAsCompleted()
         {
             IsCompleted = true;
+        }
+
+        public void ChangePriority(int priority)
+        {
+            Priority = priority;
         }
     }
 }
